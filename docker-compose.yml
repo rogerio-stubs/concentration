@@ -2,6 +2,7 @@ version: '3'
 services:
   db:
     image: postgres:13.0
+    container_name: dbPostgres
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -10,7 +11,7 @@ services:
       - 5432:5432
 
   app:
-    image: node:14
+    image: node:17
     working_dir: /app
     command: yarn start:dev
     environment:
