@@ -12,7 +12,44 @@ datasource db {
 
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+  id            String      @id @default(uuid())
+  categories    Category[]
+  email         String      @unique
+  full_name     String
+  password      String
+  created_at    DateTime    @default(now())
+  upadted_at    DateTime  
+}
+
+model Category {
+  id            String    @id @default(uuid())
+  todos         Todo[] 
+  user          User      @relation(fields: [user_id], references: [id])
+  user_id       String    
+  name          String
+  description   String?
+  created_at    DateTime  @default(now())
+  upadted_at    DateTime  
+}
+
+model Todo {
+  id            String    @id @default(uuid())
+  category      Category  @relation(fields: [category_id], references: [id])
+  category_id   String
+  name          String
+  description   String?
+  checked       Boolean
+  created_at    DateTime  @default(now())
+  upadted_at    DateTime  
+}
+
+model Offensive {
+  id            String    @id @default(uuid())
+  reccurrence   Int 
+}
+
+model Pomodoro {
+  id            String    @id @default(uuid())
+  short_break   Float 
+  long_break    Float
 }
