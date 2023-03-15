@@ -11,14 +11,15 @@ datasource db {
 }
 
 
+
 model User {
   id            String      @id @default(uuid())
   categories    Category[]
   email         String      @unique
-  full_name     String
+  fullName      String
   password      String
   created_at    DateTime    @default(now())
-  upadted_at    DateTime  
+  updated_at    DateTime    @updatedAt
 }
 
 model Category {
@@ -29,7 +30,7 @@ model Category {
   name          String
   description   String?
   created_at    DateTime  @default(now())
-  upadted_at    DateTime  
+  updated_at    DateTime  @updatedAt
 }
 
 model Todo {
@@ -40,7 +41,7 @@ model Todo {
   description   String?
   checked       Boolean
   created_at    DateTime  @default(now())
-  upadted_at    DateTime  
+  updated_at    DateTime  @updatedAt
 }
 
 model Offensive {
