@@ -1,14 +1,6 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Param,
-  HttpCode,
-  HttpStatus,
-} from '@nestjs/common';
-import { CreateUserDto } from '../dto/createUser.dto';
-import { UserDTO } from '../dto/user.dto';
+import { Controller, Get, Post, Body, Param } from '@nestjs/common';
+import { RequestCreateUser } from '../contract/RequestCreateUser';
+import { ResponseUser } from '../contract/ResponseUser';
 import { CreateUsersService } from '../services/createUser.service';
 import { FindUserByIdService } from '../services/findUserById.service';
 
@@ -20,14 +12,12 @@ export class UsersController {
   ) {}
 
   @Post()
-  create(@Body() data: CreateUserDto): Promise<UserDTO> {
+  create(@Body() data: RequestCreateUser): Promise<ResponseUser> {
     return this.createUserService.execute(data);
   }
 
   @Get(':id')
-  @HttpCode(HttpStatus.OK)
-  @HttpCode(HttpStatus.NOT_FOUND)
-  findOne(@Param('id') id: string): Promise<UserDTO> {
+  findOne(@Param('id') id: string): Promise<ResponseUser> {
     return this.findUserByIdService.execute(id);
   }
 }
