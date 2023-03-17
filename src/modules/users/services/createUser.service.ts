@@ -1,12 +1,12 @@
 import { BadRequestException, HttpException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateUserDto } from '../dto/createUser.dto';
-import { UserDto } from '../dto/user.dto';
+import { UserDTO } from '../dto/user.dto';
 
 @Injectable()
 export class CreateUsersService {
   constructor(private readonly prisma: PrismaService) {}
-  async execute(data: CreateUserDto): Promise<UserDto> {
+  async execute(data: CreateUserDto): Promise<UserDTO> {
     try {
       const { email } = data;
       const user = await this.prisma.user.findUnique({
