@@ -18,6 +18,7 @@ CREATE TABLE "Category" (
     "description" TEXT,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
+    "offensive" INTEGER NOT NULL,
 
     CONSTRAINT "Category_pkey" PRIMARY KEY ("id")
 );
@@ -33,14 +34,6 @@ CREATE TABLE "Todo" (
     "updated_at" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "Todo_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
-CREATE TABLE "Offensive" (
-    "id" TEXT NOT NULL,
-    "reccurrence" INTEGER NOT NULL,
-
-    CONSTRAINT "Offensive_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable

@@ -31,22 +31,18 @@ model Category {
   description   String?
   created_at    DateTime  @default(now())
   updated_at    DateTime  @updatedAt
+  offensive     Int
 }
 
 model Todo {
   id            String    @id @default(uuid())
-  category      Category  @relation(fields: [category_id], references: [id])
+  category      Category?  @relation(fields: [category_id], references: [id])
   category_id   String
   name          String
   description   String?
   checked       Boolean
   created_at    DateTime  @default(now())
   updated_at    DateTime  @updatedAt
-}
-
-model Offensive {
-  id            String    @id @default(uuid())
-  reccurrence   Int 
 }
 
 model Pomodoro {
