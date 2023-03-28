@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { RequestCreateCategory } from '../contract/RequestCreateCategory';
 import { ResponseCategory } from '../contract/ResponseCategory';
 import { CreateCategoryService } from '../services/createCategory.service';
@@ -26,12 +26,12 @@ export class CategoriesController {
   }
 
   @Get('/:id')
-  findById(id: string): Promise<ResponseCategory> {
+  findById(@Param('id') id: string): Promise<ResponseCategory> {
     return this.findCategoryByIDService.execute(id);
   }
 
   @Delete('/:id')
-  delete(id: string): Promise<void> {
+  delete(@Param('id') id: string): Promise<void> {
     return this.deleteCategoryByIdService.execute(id);
   }
 }
