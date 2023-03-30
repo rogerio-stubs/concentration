@@ -15,6 +15,8 @@ export class FindUserByEmailService {
 
       if (!user) throw new NotFoundException(`User not found!`);
 
+      user.password = undefined;
+
       return user;
     } catch (error) {
       console.log(`FindUserByEmailService ${error}`);
