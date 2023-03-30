@@ -37,7 +37,7 @@ model Category {
 model Todo {
   id            String    @id @default(uuid())
   category      Category?  @relation(fields: [category_id], references: [id])
-  category_id   String
+  category_id   String?
   name          String
   description   String?
   checked       Boolean
