@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { FindCategoryByIdService } from '../categories/services/findCategoryById.service';
+import { UpdateCategoryByIdService } from '../categories/services/updateCategoryById.service';
 import { TodoController } from './controller/todo.controller';
 import { AssociateTodoToCategory } from './service/associateTodoToCategory.service';
 import { CheckedTodoService } from './service/checkedTodo.service';
@@ -22,6 +23,7 @@ import { UpdateTodoService } from './service/updateTodo.service';
     AssociateTodoToCategory,
     PrismaService,
     FindCategoryByIdService,
+    UpdateCategoryByIdService,
   ],
 })
 export class TodosModule {}

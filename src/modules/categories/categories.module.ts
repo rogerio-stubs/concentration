@@ -5,6 +5,7 @@ import { CreateCategoryService } from './services/createCategory.service';
 import { DeleteCategoryByIdService } from './services/deleteCategoryById.service';
 import { FindCategoryByIdService } from './services/findCategoryById.service';
 import { ListCategoryByUserIdService } from './services/listCategoryByUserId.service';
+import { UpdateCategoryByIdService } from './services/updateCategoryById.service';
 
 @Module({
   controllers: [CategoriesController],
@@ -14,6 +15,7 @@ import { ListCategoryByUserIdService } from './services/listCategoryByUserId.ser
     ListCategoryByUserIdService,
     FindCategoryByIdService,
     DeleteCategoryByIdService,
+    UpdateCategoryByIdService,
   ],
 })
 export class CategoriesModule {}

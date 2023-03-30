@@ -1,7 +1,10 @@
+import { IsNotEmpty, IsString } from 'class-validator';
+
 export class RequestCreateCategory {
-  id: string;
+  @IsString({ message: 'The Field must be a string' })
+  @IsNotEmpty({ message: 'The Field must not be a Empty' })
   name: string;
-  descriotion?: string;
-  created_at: Date;
-  updated_at: Date;
+
+  @IsString({ message: 'The Field must be a string' })
+  description?: string;
 }
