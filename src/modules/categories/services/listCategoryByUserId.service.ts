@@ -8,7 +8,7 @@ export class ListCategoryByUserIdService {
 
   async execute(): Promise<ResponseCategory[]> {
     try {
-      const user_id = '697c5c97-8181-4a98-a68b-b26c9ac774b9';
+      const user_id = '42645747-a748-4f10-85c2-331c62d37107';
       const listOfCategories = await this.prisma.category.findMany({
         where: { user_id },
       });

@@ -8,10 +8,7 @@ export class ListTodoService {
 
   async execute(): Promise<ResponseTodo[]> {
     try {
-      const category_id = 'bb044fa3-3303-4857-b18d-e51ce5acc14b';
-      const todo = await this.prisma.todo.findMany({
-        where: { category_id },
-      });
+      const todo = await this.prisma.todo.findMany();
       return todo;
     } catch (error) {
       console.log(`ListTodoService ${error}`);
