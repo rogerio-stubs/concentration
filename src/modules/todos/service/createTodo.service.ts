@@ -12,7 +12,6 @@ export class CreateTodoService {
     try {
       const data: CreateTodoDTO = {
         ...request,
-        category_id: 'bb044fa3-3303-4857-b18d-e51ce5acc14b',
         checked: false,
       };
       const todo = await this.prisma.todo.create({ data });

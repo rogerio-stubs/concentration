@@ -12,8 +12,9 @@ export class CreateCategoryService {
     try {
       // esse user_id precisa ser recuperado por meio do paylodToken
       const data: CreateCategoryDTO = {
-        user_id: '697c5c97-8181-4a98-a68b-b26c9ac774b9',
         ...request,
+        user_id: '42645747-a748-4f10-85c2-331c62d37107',
+        offensive: 0,
       };
       const category = await this.prisma.category.create({ data });
       return category;

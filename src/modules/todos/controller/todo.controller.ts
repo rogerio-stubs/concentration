@@ -10,6 +10,7 @@ import {
 import { RequestCreateTodo } from '../contract/RequestCreateTodo';
 import { RequestUpdateTodo } from '../contract/RequestUpdateTodo';
 import { ResponseTodo } from '../contract/ResponseTodo';
+import { AssociateTodoToCategory } from '../service/associateTodoToCategory.service';
 import { CheckedTodoService } from '../service/checkedTodo.service';
 import { CreateTodoService } from '../service/createTodo.service';
 import { DeleteTodoByIdService } from '../service/deleteTodoById.service';
@@ -26,11 +27,20 @@ export class TodoController {
     private readonly checkedTodoService: CheckedTodoService,
     private readonly findTodoByIdService: FindTodoByIdService,
     private readonly deleteTodoByIdService: DeleteTodoByIdService,
+    private readonly associateTodoToCategory: AssociateTodoToCategory,
   ) {}
 
   @Post()
   create(@Body() request: RequestCreateTodo): Promise<ResponseTodo> {
     return this.createTodoService.execute(request);
+  }
+
+  @Post('/associate/todo/:todoId/category/:categoryId')
+  associate(
+    @Param('todoId') todoId: string,
+    @Param('categoryId') categoryId: string,
+  ): Promise<ResponseTodo> {
+    return this.associateTodoToCategory.execute({ categoryId, todoId });
   }
 
   @Put()

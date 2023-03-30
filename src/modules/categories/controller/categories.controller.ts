@@ -1,4 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { AssociateTodoToCategory } from 'src/modules/todos/service/associateTodoToCategory.service';
 import { RequestCreateCategory } from '../contract/RequestCreateCategory';
 import { ResponseCategory } from '../contract/ResponseCategory';
 import { CreateCategoryService } from '../services/createCategory.service';
