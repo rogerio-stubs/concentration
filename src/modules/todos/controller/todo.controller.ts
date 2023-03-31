@@ -44,8 +44,11 @@ export class TodoController {
   }
 
   @Put()
-  update(@Body() request: RequestUpdateTodo): Promise<ResponseTodo> {
-    return this.updateTodoService.execute(request);
+  update(
+    @Param('/:id') id: string,
+    @Body() request: RequestUpdateTodo,
+  ): Promise<ResponseTodo> {
+    return this.updateTodoService.execute(id, request);
   }
 
   @Put('/:id/checked')

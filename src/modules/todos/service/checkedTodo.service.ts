@@ -7,7 +7,6 @@ import { UpdateTodoService } from './updateTodo.service';
 @Injectable()
 export class CheckedTodoService {
   constructor(
-    private readonly prisma: PrismaService,
     private readonly findTodoByIdService: FindTodoByIdService,
     private readonly updateTodoService: UpdateTodoService,
   ) {}
@@ -24,7 +23,7 @@ export class CheckedTodoService {
       }
 
       todo.checked = changeChecked;
-      const updateTodo = await this.updateTodoService.execute(todo);
+      const updateTodo = await this.updateTodoService.execute(todo.id, todo);
       return updateTodo;
     } catch (error) {
       console.log(`CheckedTodoService ${error}`);

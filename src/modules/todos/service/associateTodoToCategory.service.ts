@@ -20,10 +20,9 @@ export class AssociateTodoToCategory {
       await this.findCategoryByIDService.execute(categoryId);
 
       const data: UpdateTodoDTO = {
-        id: todoId,
         category_id: categoryId,
       };
-      const todo = await this.updateTodoService.execute(data);
+      const todo = await this.updateTodoService.execute(todoId, data);
       return todo;
     } catch (error) {
       console.log(`AssociateTodoToCategory ${error}`);

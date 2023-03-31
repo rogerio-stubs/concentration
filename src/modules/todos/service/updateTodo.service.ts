@@ -7,10 +7,10 @@ import { UpdateTodoDTO } from '../dto/UpdateTodo.dto';
 export class UpdateTodoService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async execute(data: UpdateTodoDTO): Promise<ResponseTodo> {
+  async execute(id: string, data: UpdateTodoDTO): Promise<ResponseTodo> {
     try {
       const todo = await this.prisma.todo.update({
-        where: { id: data.id },
+        where: { id },
         data,
       });
       return todo;
