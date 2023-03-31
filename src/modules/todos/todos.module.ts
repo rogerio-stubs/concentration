@@ -7,6 +7,7 @@ import { AssociateTodoToCategory } from './service/associateTodoToCategory.servi
 import { CheckedTodoService } from './service/checkedTodo.service';
 import { CreateTodoService } from './service/createTodo.service';
 import { DeleteTodoByIdService } from './service/deleteTodoById.service';
+import { FindTodoByCategoryIdService } from './service/findTodoByCategoryId.service';
 import { FindTodoByIdService } from './service/findTodoById.service';
 import { ListTodoService } from './service/listTodo.service';
 import { UpdateTodoService } from './service/updateTodo.service';
@@ -24,6 +25,7 @@ import { UpdateTodoService } from './service/updateTodo.service';
     PrismaService,
     FindCategoryByIdService,
     UpdateCategoryByIdService,
+    FindTodoByCategoryIdService,
   ],
 })
 export class TodosModule {}
