@@ -41,6 +41,7 @@ model Todo {
   name          String
   description   String?
   checked       Boolean
+  recurrence    String
   created_at    DateTime  @default(now())
   updated_at    DateTime  @updatedAt
 }

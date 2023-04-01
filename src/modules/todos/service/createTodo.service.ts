@@ -13,6 +13,7 @@ export class CreateTodoService {
       const data: CreateTodoDTO = {
         ...request,
         checked: false,
+        recurrence: '0',
       };
       const todo = await this.prisma.todo.create({ data });
       return todo;

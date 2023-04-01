@@ -30,6 +30,7 @@ CREATE TABLE "Todo" (
     "name" TEXT NOT NULL,
     "description" TEXT,
     "checked" BOOLEAN NOT NULL,
+    "recurrence" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
 
