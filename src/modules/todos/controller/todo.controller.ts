@@ -17,6 +17,8 @@ import { DeleteTodoByIdService } from '../service/deleteTodoById.service';
 import { FindTodoByIdService } from '../service/findTodoById.service';
 import { ListTodoService } from '../service/listTodo.service';
 import { UpdateTodoService } from '../service/updateTodo.service';
+import { CreateRecurrenceService } from '../service/createRecurrence.service';
+import { RequestRecurrence } from '../contract/RequestReccuence';
 
 @Controller('todos')
 export class TodoController {
@@ -28,11 +30,20 @@ export class TodoController {
     private readonly findTodoByIdService: FindTodoByIdService,
     private readonly deleteTodoByIdService: DeleteTodoByIdService,
     private readonly associateTodoToCategory: AssociateTodoToCategory,
+    private readonly createRecurrenceService: CreateRecurrenceService,
   ) {}
 
   @Post()
   create(@Body() request: RequestCreateTodo): Promise<ResponseTodo> {
     return this.createTodoService.execute(request);
+  }
+
+  @Post('/:id/recurrence')
+  createRecurrence(
+    @Param('id') id: string,
+    @Body() request: RequestRecurrence,
+  ): Promise<void> {
+    return this.createRecurrenceService.execute(id, request);
   }
 
   @Post('/associate/todo/:todoId/category/:categoryId')

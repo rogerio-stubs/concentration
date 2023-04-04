@@ -11,6 +11,7 @@ import { FindTodoByCategoryIdService } from './service/findTodoByCategoryId.serv
 import { FindTodoByIdService } from './service/findTodoById.service';
 import { ListTodoService } from './service/listTodo.service';
 import { UpdateTodoService } from './service/updateTodo.service';
+import { CreateRecurrenceService } from './service/createRecurrence.service';
 
 @Module({
   controllers: [TodoController],
@@ -26,6 +27,7 @@ import { UpdateTodoService } from './service/updateTodo.service';
     FindCategoryByIdService,
     UpdateCategoryByIdService,
     FindTodoByCategoryIdService,
+    CreateRecurrenceService,
   ],
 })
 export class TodosModule {}
