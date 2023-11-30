@@ -1,24 +1,25 @@
 version: '3'
 services:
-  db:
-    image: postgres:13.0
-    container_name: dbPostgres
-    environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB}
-    ports:
-      - 5432:5432
-
   app:
-    image: node:17
-    working_dir: /app
-    command: yarn start:dev
-    environment:
-      NODE_ENV: development
+    build: .
     ports:
-      - 3000:3000
-    volumes:
-      - .:/app
+      - "3000:3000"
+    environment:
+      DATABASE_URL: "postgresql://developerDB:developerPass@dbPostgres/developer-concentration?schema=public"
+    container_name: appConcentration
+    depends_on:
+      - db
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: developerDB
+      POSTGRES_PASSWORD: developerPass
+      POSTGRES_DB: developer-concentration
+    ports:
+      - "5432:5432"
+    container_name: dbPostgres
+  prisma:
+    build: .
+    command: ["npx", "prisma", "migrate", "dev"]
     depends_on:
       - db
